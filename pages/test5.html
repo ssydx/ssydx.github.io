@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="a"></p>
+    <button onclick="document.getElementById('a').innerHTML=Date()">现在几点？</button>
+    <button onclick="this.innerHTML='按钮'">改变按钮本身</button>
+    <p id="b"></p>
+    <button onclick="func1(80)">按钮</button>
+    <script>
+        function func1(x){
+            var v = "";
+            if (x > 90) {
+                v = "great"
+            }
+            else if (x > 70) {
+                v = "good"
+            }
+            else {
+                v = "bad"
+            }
+            document.getElementById('b').innerHTML = v
+        }
+    </script>
+    <p id="c"></p>
+    <script>
+        var day;
+        switch (new Date().getDay()) {
+            case 0:
+                day = "周日啦";
+                break;
+            case 6:
+                day = "休息啦";
+                break;
+            default:
+                day = "期待周末"
+        }
+        document.getElementById('c').innerHTML = day;
+    </script>
+    <p id="d"></p>
+    <script>
+        var ls = ["张三","李四","王五"];
+        var i;
+        var text = "";
+        for (i = 0; i < ls.length; i++) {
+            text += ls[i] + "-";
+        }
+        document.getElementById('d').innerHTML = text;
+    </script>
+</body>
+</html>

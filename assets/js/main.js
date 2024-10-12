@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app');
+  const headerContainer = document.getElementById('header-container');
 
-  // 引入头部组件
-  fetch('/components/header.html')
+  fetch('../components/header.html')
     .then(response => response.text())
     .then(html => {
-      app.innerHTML += html;
+      headerContainer.innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
     });
+});
