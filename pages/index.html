@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>文档标题</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+</head>
+<body>
+	<div id='header-container'></div>
+	<p>123</p>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+		      const headerContainer = document.getElementById('header-container');
+
+		      fetch('../components/header.html')
+		        .then(response => response.text())
+		        .then(html => {
+		          headerContainer.innerHTML = html;
+		        })
+		        .catch(error => {
+		          console.error('Error loading header:', error);
+		        });
+		    });
+	</script>
+</body>
+</html>
