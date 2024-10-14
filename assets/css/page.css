@@ -1,0 +1,231 @@
+@import '/assets/css/map.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+a {
+    text-decoration: none;
+}
+html {
+    background-color: var(--color-html);
+}
+body {
+    background-color: inherit;
+    margin: 0 var(--margin-horizontal-body);
+}
+.mobile-nav, .nav-content {
+    background-color: var(--color-nav);
+}
+.menu {
+    background-color: var(--color-menu);
+}
+
+input[type='submit'] {
+    padding: 0 5px;
+}
+@media (min-width: 769px){
+    /* 当屏幕宽度大于768时执行以下样式 */
+    .mobile-nav {
+        /* 取消网页样式的菜单 */
+        display: none;
+    }
+    .drop-box, .search-box, .document-path {
+        margin-left: 1em;
+    }
+    .web-nav {
+        border-bottom: 1px solid #ccc;
+        margin-top: 0.5em;
+        margin-bottom: 1.2em;
+        height: 2em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .left-nav, .right-nav {
+        height: 2em;
+        display: flex;
+        align-items: center;
+    }
+    .left-nav {
+        width: 60%;
+    }
+    .right-nav {
+        width: 40%;
+    }
+    .drop-box {
+        white-space: nowrap;
+    }
+    .drop-box select {
+        padding: 2px;
+    }
+    .search-box {
+        flex: 1;
+        display: flex;
+    }
+    .search-box input {
+        padding: 2px;
+    }
+    input[type='search'] {
+        width: 100%;
+        margin-right: 0.5em;
+    }
+
+}
+@media (max-width: 768px){
+    /* 当屏幕宽度小于769时执行以下样式 */
+    .web-nav {
+        display: none;
+        /* 取消网页样式的菜单 */
+    }
+    body {
+        margin-top: 2.5em;
+        /* 
+            顶部留出距离，目的是配合导航栏的位置
+            达成不下移主体元素也不会遮挡主体元素的效果
+            注意体会（采用下移时则不必如此操作）
+        */
+    }
+    .home-icon, .drop-box, .search-box {
+        margin-left: 1em;
+    }
+    .search-box {
+        margin-right: 0.5em;
+    }
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* 固定导航栏的同时定位到body预留的空白处 */
+        z-index: 1;
+        /* 使导航栏在页面向下滚动显示在主体元素的上方 */
+        height: 2.5em;
+        width: 100%;  
+    }
+    .nav-content {
+        position: absolute;
+        z-index: 1;
+        /*
+            position和z-index用于保证菜单弹出时依然在最上层
+            目的是产生导航栏在弹出菜单的上方的效果
+        */
+        height: 2.5em;
+        width: 100%;
+        display: flex;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        /* 由于导航栏上左右与页面边缘无间距，此处不必单独显示下边框 */
+    }
+    .menu {
+        width: 2.5em;
+        height: 2.5em;
+        flex-shrink: 0;
+        /* 避免菜单被压缩 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu > span {
+        /* 构建菜单的线条 */
+        position: relative;
+        height: 2px;
+        width: 1.5em;
+        background-color: black;
+        transition: all 400ms ease;
+    }
+    .menu > span::before {
+        /* 构建菜单的线条 */
+        position: absolute;
+        top: 8px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        content: '';
+        background-color: black;
+    }
+    .menu > span::after {
+        /* 构建菜单的线条 */
+        position: absolute;
+        top: -8px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        content: '';
+        background-color: black;
+    }
+    .menu-input {
+        display: none;
+    }
+    .menu-wrapper {
+        position: fixed;
+        top: 2.5em;
+        left: -310px;
+        height: 100%;
+        width: 300px;
+        padding: 1em 1em;
+        transition: left 400ms ease;
+        background-color: white;
+        overflow: auto;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+    .menu-input:checked ~ .nav-content span {
+        transform: rotate(315deg);
+    }
+    .menu-input:checked ~ .nav-content span::before {
+        transform: rotate(90deg);
+        top: 0;
+    }
+    .menu-input:checked ~ .nav-content span::after {
+        top: 0;
+    }
+    .menu-input:checked:hover ~ .nav-content span {
+        transform: rotate(135deg);
+    }
+    .menu-input:checked ~ .menu-wrapper {
+        left: 0;
+    }
+    .nav-wrapper {
+        flex: 1;
+        padding: 0.25em 0;
+        display: flex;
+        align-items: stretch;
+    }
+    .home-icon {
+        align-self: center;
+    }
+    .drop-box {
+        white-space: nowrap;
+        /* 确保其不会受压缩后换行 */
+    }
+    .drop-box select {
+        height: 100%;
+    }
+    .search-box {
+        flex-grow: 1;
+        /* 使其可扩展使用所有剩余空间 */
+        display: flex;
+        align-items: stretch;
+        /* strech可不指明，默认即此 */
+    }
+    .search-box input {
+        height: 100%;
+    }
+    .search-icon {
+        position: absolute;
+        /* 脱离正常文档流，以便叠加到搜索框内 */
+        margin-left: 4px;
+        align-self: center;
+    }
+    input[type='search'] {
+        width: 100%;
+        padding-left: 24px;
+    }
+    .document {
+        position: relative;
+        z-index: 0;
+    }
+
+}

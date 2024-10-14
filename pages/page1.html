@@ -4,113 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: white;
-        }
-        .home-icon, .menu, .theme-selector-label, .document-title,
-        .search-box {
-            margin: 0 5px;
-        }
-        input[type='search'], .theme-selector {
-            margin-right: 5px;
-            height: 22px;
-        }
-        @media (min-width: 601px){
-            .mobile-nav {
-                display: none;
-            }
-            .web-nav {
-                border-bottom: 1px solid #ccc;
-                margin-top: 0.5em;
-                margin-bottom: 1.2em;
-                padding: 0.5em 0;
-                height: 100px;
-                display: flex;
-                justify-content: space-between;
-                
-            }
-            .left-nav, .right-nav {
-                display: flex;
-                align-items: center;
-            }
-            input[type='search'] {
-                width: 200px;
-            }
-        }
-
-        @media (max-width: 600px){
-            .web-nav {
-                display: none;
-            }
-            .mobile-nav {
-                border-bottom: 1px solid #ccc;
-                height: 40px;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content:center;
-                position: fixed;
-                z-index: 1000;
-                background-color: white;
-            }
-            .menu {
-                width: 30px;
-                height: 30px;
-                background-color: black;
-                flex-shrink: 0;
-            }
-            .home-icon {
-                flex-shrink: 0;
-            }
-            .search-box {
-                flex-grow: 1;
-                display: flex;
-                align-items: center;
-            }
-            input[type='search'] {
-                flex: 1;
-                width: 100%;
-                padding-left: 20px;
-            }
-            .theme-selector-label {
-                display: inline-block;
-                white-space: nowrap;
-            }
-            .search-icon {
-                position: absolute;
-                padding-left: 4px;
-                align-self: center;
-            }
-            .document {
-                position: relative;
-                top: 40px;
-            }
-        }
-        
-
-
-    </style>
+    <link rel="stylesheet" href="/assets/css/page.css">
+    <script src="/assets/js/menu.js"></script>
 </head>
 <body>
     <nav>
         <div class="web-nav">
             <div class="left-nav">
-                <svg class="home-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="vertical-align: middle;">
-                    <path d="M1001.423238 494.592q21.504 20.48 22.528 45.056t-16.384 40.96q-19.456 17.408-45.056 16.384t-40.96-14.336q-5.12-4.096-31.232-28.672t-62.464-58.88-77.824-73.728-78.336-74.24-63.488-60.416-33.792-31.744q-32.768-29.696-64.512-28.672t-62.464 28.672q-10.24 9.216-38.4 35.328t-65.024 60.928-77.824 72.704-75.776 70.656-59.904 55.808-30.208 27.136q-15.36 12.288-40.96 13.312t-44.032-15.36q-20.48-18.432-19.456-44.544t17.408-41.472q6.144-6.144 37.888-35.84t75.776-70.656 94.72-88.064 94.208-88.064 74.752-70.144 36.352-34.304q38.912-37.888 83.968-38.4t76.8 30.208q6.144 5.12 25.6 24.064t47.616 46.08 62.976 60.928 70.656 68.096 70.144 68.096 62.976 60.928 48.128 46.592zM447.439238 346.112q25.6-23.552 61.44-25.088t64.512 25.088q3.072 3.072 18.432 17.408l38.912 35.84q22.528 21.504 50.688 48.128t57.856 53.248q68.608 63.488 153.6 142.336l0 194.56q0 22.528-16.896 39.936t-45.568 18.432l-193.536 0 0-158.72q0-33.792-31.744-33.792l-195.584 0q-17.408 0-24.064 10.24t-6.656 23.552q0 6.144-0.512 31.232t-0.512 53.76l0 73.728-187.392 0q-29.696 0-47.104-13.312t-17.408-37.888l0-203.776q83.968-76.8 152.576-139.264 28.672-26.624 57.344-52.736t52.224-47.616 39.424-36.352 19.968-18.944z"></path>
-                </svg>
-                <p class="document-title">文档标题</p>
+                <img class="home-icon" src="/assets/images/home-icon.svg" alt="主页图标" height="16px" width="16px">
+                <p class="document-path">当前位置</p>
             </div>
             <div class="right-nav">
-                <label class="theme-selector-label">
-                    主题
-                    <select class="theme-selector">
+                <form class="drop-box">
+                    <label class="theme-label" for="theme-selector">主题</label>
+                    <select class="theme-selector" id="theme-selector">
                         <option value="auto">自动</option>
                         <optgroup label="白天">
                             <option value="lightgreen">浅绿</option>
@@ -123,7 +30,7 @@
                             <option value="deepgrey">深灰</option>
                         </optgroup>
                     </select>
-                </label>
+                </form>
                 <form class="search-box">
                     <input type="search" placeholder="快速搜索">
                     <input type="submit" value="确定">
@@ -131,87 +38,164 @@
             </div>
         </div>
         <div class="mobile-nav">
-            <label for="" class="menu">
-                <span></span>
-            </label>
-            <svg class="home-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="vertical-align: middle;">
-                <path d="M1001.423238 494.592q21.504 20.48 22.528 45.056t-16.384 40.96q-19.456 17.408-45.056 16.384t-40.96-14.336q-5.12-4.096-31.232-28.672t-62.464-58.88-77.824-73.728-78.336-74.24-63.488-60.416-33.792-31.744q-32.768-29.696-64.512-28.672t-62.464 28.672q-10.24 9.216-38.4 35.328t-65.024 60.928-77.824 72.704-75.776 70.656-59.904 55.808-30.208 27.136q-15.36 12.288-40.96 13.312t-44.032-15.36q-20.48-18.432-19.456-44.544t17.408-41.472q6.144-6.144 37.888-35.84t75.776-70.656 94.72-88.064 94.208-88.064 74.752-70.144 36.352-34.304q38.912-37.888 83.968-38.4t76.8 30.208q6.144 5.12 25.6 24.064t47.616 46.08 62.976 60.928 70.656 68.096 70.144 68.096 62.976 60.928 48.128 46.592zM447.439238 346.112q25.6-23.552 61.44-25.088t64.512 25.088q3.072 3.072 18.432 17.408l38.912 35.84q22.528 21.504 50.688 48.128t57.856 53.248q68.608 63.488 153.6 142.336l0 194.56q0 22.528-16.896 39.936t-45.568 18.432l-193.536 0 0-158.72q0-33.792-31.744-33.792l-195.584 0q-17.408 0-24.064 10.24t-6.656 23.552q0 6.144-0.512 31.232t-0.512 53.76l0 73.728-187.392 0q-29.696 0-47.104-13.312t-17.408-37.888l0-203.776q83.968-76.8 152.576-139.264 28.672-26.624 57.344-52.736t52.224-47.616 39.424-36.352 19.968-18.944z"></path>
-            </svg>
-            <label class="theme-selector-label">
-                主题
-                <select class="theme-selector">
-                    <option value="auto">自动</option>
-                    <optgroup label="白天">
-                        <option value="lightgreen">浅绿</option>
-                        <option value="White">白色</option>
-                        <option value="lightgrey">浅灰</option>
-                    </optgroup>
-                    <optgroup label="夜晚">
-                        <option value="grey">灰色</option>
-                        <option value="Black">黑色</option>
-                        <option value="deepgrey">深灰</option>
-                    </optgroup>
-                </select>
-            </label>
-            <form class="search-box">
-                <svg class="search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                    <path d="M430.829268 124.878049c156.097561 0 280.97561 124.878049 280.97561 280.97561s-124.878049 280.97561-280.97561 280.97561-280.97561-124.878049-280.97561-280.97561S280.97561 124.878049 430.829268 124.878049M430.829268 0c-224.780488 0-405.853659 181.073171-405.853659 405.853659s181.073171 405.853659 405.853659 405.853659 405.853659-181.073171 405.853659-405.853659S655.609756 0 430.829268 0L430.829268 0z"></path>
-                    <path d="M674.341463 661.853659c-12.487805 0-24.97561 6.243902-31.219512 12.487805L624.390244 699.317073c-18.731707 18.731707-18.731707 49.95122 0 68.682927l243.512195 243.512195c6.243902 6.243902 18.731707 12.487805 31.219512 12.487805 12.487805 0 24.97561-6.243902 31.219512-12.487805l18.731707-18.731707c18.731707-18.731707 18.731707-49.95122 0-68.682927l-243.512195-243.512195C699.317073 668.097561 686.829268 661.853659 674.341463 661.853659L674.341463 661.853659z"></path>
-                </svg>
-                <input type="search" placeholder="快速搜索">
-                <input type="submit" value="确定">
-            </form>
+            <input class="menu-input" type="checkbox" id="menu-toggler">
+            <div class="nav-content">
+                <label for="menu-toggler" class="menu">
+                    <span></span>
+                </label>
+                <div class="nav-wrapper">
+                    <img class="home-icon" src="/assets/images/home-icon.svg" alt="主页图标" height="20px" width="20px">
+                    <form class="drop-box">
+                        <label class="theme-label">主题</label>
+                        <select class="theme-selector">
+                            <option value="auto">自动</option>
+                            <optgroup label="白天">
+                                <option value="lightgreen">浅绿</option>
+                                <option value="White">白色</option>
+                                <option value="lightgrey">浅灰</option>
+                            </optgroup>
+                            <optgroup label="夜晚">
+                                <option value="grey">灰色</option>
+                                <option value="Black">黑色</option>
+                                <option value="deepgrey">深灰</option>
+                            </optgroup>
+                        </select>
+                    </form>
+                    <form class="search-box">
+                        <img class="search-icon" src="/assets/images/search-icon.svg" alt="搜索图标" width="20px" height="20px">
+                        <input type="search" placeholder="快速搜索">
+                        <input type="submit" value="确定">
+                    </form>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div style="text-align: center; font-size: 1.2em; font-weight: bolder; border-bottom: solid;">
+                    目录
+                </div>
+                <hgroup>
+                    <p style="font-size: 1.1em; font-weight: bold;">C</p>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                </hgroup>
+                <hgroup>
+                    <p style="font-size: 1.1em; font-weight: bold;">JAVA</p>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                </hgroup>
+                <hgroup>
+                    <p style="font-size: 1.1em; font-weight: bold;">PYTHON</p>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                    <a href="/pages/flex.html" target="_blank" style="display: block; padding-left: 1em;">一个链接</a>
+                </hgroup>
+            </div>
         </div>
     </nav>
     <div class="document">
-        <p>1</p>
-        <p>12</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
-        <p>12324</p>
+        <h1>一级标题</h1>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
+        <p>有一家旅馆提供叫醒服务，但是要求旅客自己决定叫醒的方法。可以是打客房电话，也可以看到，回调函数通常和应用处于同一抽象层（因为传入什么样的回调函数是在应用级别决定的）。而回调就成了一个高层调用底层，底层再回过头来调用高层的过程。（我认为）这应该是回调最早的应用之处，也是其得名如此的原因。</p>
     </div>
 </body>
 </html>
