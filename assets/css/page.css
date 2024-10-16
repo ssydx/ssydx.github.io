@@ -73,11 +73,43 @@ input[type='submit'] {
         width: 100%;
         margin-right: 0.5em;
     }
-
+    .document {
+        display: flex;
+        justify-content: space-between;
+    }
+    .document-wrapper {
+        width: 300px;
+    }
+    .sidebar {
+        position: sticky;
+        top:0;
+        width: 230px;
+        max-height: 100vh;
+        
+    }
+    .sidebar-wrapper {
+        float: left;
+        height: 100%;
+        width: 217px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+    .sidebar-button {
+        float: right;
+        height: 100%;
+        width: 12px;
+        background-color: #AAAAAA;
+        border-radius: 0 5px;
+        display: table;
+    }
+    .sidebar-button span {
+        display: table-cell;
+        vertical-align: middle;
+    }
 }
 @media (max-width: 768px){
     /* 当屏幕宽度小于769时执行以下样式 */
-    .web-nav {
+    .web-nav, .sidebar {
         display: none;
         /* 取消网页样式的菜单 */
     }

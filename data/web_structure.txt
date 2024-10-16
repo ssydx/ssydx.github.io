@@ -1,0 +1,12 @@
+nav
+    web-nav
+        left-nav
+            home
+            other
+        right-nav
+            theme
+            search
+    mobile-web
+main
+    sidebar
+    document
