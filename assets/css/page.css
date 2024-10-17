@@ -29,7 +29,7 @@ input[type='submit'] {
 @media (min-width: 769px){
     /* 当屏幕宽度大于768时执行以下样式 */
     .mobile-nav {
-        /* 取消网页样式的菜单 */
+        /* 取消移动样式的菜单 */
         display: none;
     }
     .drop-box, .search-box, .document-path {

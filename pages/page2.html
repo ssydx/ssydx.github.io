@@ -4,26 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/page2.css">
+    <!-- <script src="/assets/js/page2.js" defer></script> -->
 </head>
 <body>
-    <nav>
-        <img src="/assets/images/home-icon.svg" alt="主页" height="24px">
-        <a href="/pages/index2.html">分类1</a>
-        <a href="/pages/index2.html">分类2</a>
-        <form action="">
-            <label for=""></label>
-            <select name="theme-selector" id="theme-selector">
-                <option value="auto">自动</option>
-                <optgroup>
-                    <option value="lightday">白天-浅色</option>
-                    <option value="darkday">白天深色</option>
-                </optgroup>
-                <optgroup>
-                    <option value="lightday">白天-浅色</option>
-                    <option value="darkday">白天深色</option>
-                </optgroup>
-            </select>
-        </form>
-    </nav>
+    <div class="web-nav">
+        <img class="homeIcon" src="/assets/images/home-icon.svg" alt="主页" height="24">
+        <div class="left-nav">
+            <!-- 保留外部left-nav以便后期新增子元素 -->
+            <div class="path">
+                <span>此路径有八个中文字符一二三四五六七八</span>
+                <span>此路径有五个中文字符一二三四五</span>
+                <span>此路径有一个中文字符一</span>
+                <span>此路径没有中文字符</span>
+                <span>路径5</span>
+                <span>路径6</span>
+            </div>
+        </div>
+        <span class="dividingLine"></span>
+        <div class="right-nav">
+            <form id="searchForm-id" class="searchForm" action="search.html">
+                <input type="search" class="searchBox" name="search-box" placeholder="请输入搜索内容" form="searchForm-id">
+                <input type="submit" class="searchSubmit" name="search-submit" value="确定" form="searchForm-id">
+            </form>
+            <form id="themeForm-id" class="themeForm" action="search.html">
+                <label class="themeLabel" for="themeSelector-id" form="themeForm-id">主题</label>
+                <select id="themeSelector-id" class="themeSelector" name="theme-selector" form="themeForm-id">
+                    <option value="auto">自动</option>
+                    <option value="light">白天</option>
+                    <option value="dark">夜晚</option>
+                    <option value="care">护眼</option>
+                </select>
+            </form>
+        </div>           
+    </div>
+    <main>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+
+    </main>
 </body>
 </html>

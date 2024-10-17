@@ -179,8 +179,31 @@ form
             formnovalidate：
             formtarget：
             dirname：文本方向，常规语言中用不到
-    常用属性：
-    ...
+    常用属性：name、action、method、rel、target
+    action：提交表单时将数据发送到的网址
+    method：发送数据时的加密方式
+        get：不加密
+            如：URL?name=value&name=value
+            ?后的name=value&name=value即表单数据
+        post：加密
+            网址后没有?name=value&name=value
+    rel：提交网址与当前网址的关系
+        external：外部站点
+        help：帮助文档
+        license：文档版权
+        next：下一文档
+        nofollow：未经认可的链接
+        noopener：
+        noreferrer：
+        opener：
+        prev：上一文档
+        search：搜索文档
+    target：打开位置
+        _blank：新窗口
+        _self：当前框架，默认
+        _parent：父框架
+        _top：整个窗口
+        framename：指定框架
 
 
 
