@@ -107,4 +107,7 @@ main {
     .right-nav {
         max-width: 100%;
     }
+    .themeForm {
+        display: none;
+    }
 }
