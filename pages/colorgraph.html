@@ -17,6 +17,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 10px;
             background-color: aqua;
             position: sticky;
             top: 0;
@@ -27,21 +28,67 @@
         .left-nav {
             display: contents;
         }
-        .right-nav {
-            flex: 0 0 auto;
-            display: flex;
-            width: 200px;
-            justify-content: space-around;
+        .menu {
+            height: 40px;
+            width: 40px;
+            background-color: tomato;
+            position: relative;
+            left: -10px;
         }
-        p[class*='left-nav'] {
+        .menuwrapper {
+            position: fixed;
+            top: 40px;
+            left: -300px;
+            overflow-y: auto;
+            width: 300px;
+            height: calc(100vh - 40px);
+            background-color: aliceblue;
+            padding: 10px;
+            transition: left 400ms ease;
+        }
+        .menu-link {
+            height: 150px;
+            width: 100%;
+            background-color: black;
+            margin-bottom: 10px;
+        }
+        .menubutton:checked ~ .menuwrapper {
+            left: 0;
+        }
+        .left-nav-one {
+            flex: 0 0 auto;
             height: 20px;
-            width: 50px;
+            width: 30px;
             background-color: cornflowerblue;
         }
-        p[class*='right-nav'] {
-            height: 30px;
-            width: 30px;
+        .left-nav-two {
+            flex: 0 0 auto;
+            height: 20px;
+            width: 150px;
+            background-color: rgb(24, 26, 30);
+        }
+        .right-nav {
+            flex: 1 1 auto;
+            display: flex;
+            gap: 5px 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 50%;
+            border: solid;
+        }
+        .right-nav-one {
+            flex: 1 1 auto;
+            height: 15px;
+            max-width: 100%;
+            min-width: 150px;
             background-color: rgb(100, 237, 118);
+        }
+        .right-nav-two {
+            flex: 0 0 auto;
+            height: 15px;
+            width: 50px;
+            background-color: rgb(238, 255, 0);
         }
         .main {
             display: flex;
@@ -114,21 +161,41 @@
         .rightbutton:checked ~ .right-bar {
             display: none;
         }
+        @media (min-width: 601px) {
+            .menu {
+                display: none;
+            }
+        }
+        @media (max-width: 600px) {
+            div[class*='bar'] {
+                display: none;
+            }
+            .left-nav-two {
+                display: none;
+            }
+
+        }
     </style>
 </head>
 <body>
     <div class="nav">
         <div class="left-nav">
+            <label class="menu" for="menubutton"></label>
             <p class="left-nav-one"></p>
             <p class="left-nav-two"></p>
         </div>
         <div class="right-nav">
             <p class="right-nav-one"></p>
             <p class="right-nav-two"></p>
-            <p class="right-nav-three"></p>
         </div>
     </div>
     <div class="main">
+        <input type="checkbox" id="menubutton" class="menubutton" style="display: none;">
+        <div class="menuwrapper">
+            <p class="menu-link"></p>
+            <p class="menu-link"></p>
+            <p class="menu-link"></p>
+        </div>
         <div class="bar-wrapper">
             <input type="checkbox" id="leftbutton" class="leftbutton" style="display: none;">
             <div class="left-bar">
