@@ -29,11 +29,13 @@
             display: contents;
         }
         .menu {
+            flex: 0 0 auto;
             height: 40px;
             width: 40px;
             background-color: tomato;
             position: relative;
             left: -10px;
+            display: none;
         }
         .menuwrapper {
             position: fixed;
@@ -45,6 +47,7 @@
             background-color: aliceblue;
             padding: 10px;
             transition: left 400ms ease;
+            display: none;
         }
         .menu-link {
             height: 150px;
@@ -93,15 +96,20 @@
         .main {
             display: flex;
             justify-content: space-between;
+            gap: 10px;
          }
         .doc {
             flex: 1 1 auto;
             height: 1000px;
             width: 100%;
             background-color: blueviolet;
-            margin: 0 10px;
-            border: solid;
             padding: 10px;
+        }
+        .allbar {
+            display: none;
+        }
+        .all-bar-wrapper,.all-bar {
+            display: contents;
         }
         .left-bar {
             height: calc(100vh - 40px);
@@ -147,7 +155,7 @@
             width: 20px;
             position: sticky;
             top: 40px;
-            background-color: rgb(183, 210, 30);
+            background-color: rgba(183, 210, 30, 0.603);
             border-radius: 0 10px 10px 0;
         }
         .right-bar ~ .bar {
@@ -161,19 +169,56 @@
         .rightbutton:checked ~ .right-bar {
             display: none;
         }
-        @media (min-width: 601px) {
-            .menu {
+        .allbutton:checked ~ .all-bar {
+            display: none;
+        }
+        @media (max-width: 1200px) {
+            .menu, .menuwrapper {
                 display: none;
             }
+            .all-bar-wrapper {
+                flex: 0 0 auto;
+                display: flex;
+            }
+            .all-bar {
+                display: flex;
+                flex-direction: column;
+                position: sticky;
+                top: 40px;
+                width: 200px;
+                height: calc(100vh - 40px);
+                background-color: brown;
+                overflow-y: auto;
+            }
+            .allbar {
+                display: block;
+                height: calc(100vh - 40px);
+                width: 20px;
+                position: sticky;
+                top: 40px;
+                background-color: rgb(210, 30, 30);
+                border-radius: 0 10px 10px 0;
+            }
+            .bar-wrapper, .left-bar, .right-bar {
+                display: contents;
+            }
+            .bar {
+                display: none;
+            }
+            p[class*='link'] {
+                flex: 0 0 auto;
+            }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .menu, .menuwrapper {
+                display: block;
+            }
             div[class*='bar'] {
                 display: none;
             }
             .left-nav-two {
                 display: none;
             }
-
         }
     </style>
 </head>
@@ -196,29 +241,66 @@
             <p class="menu-link"></p>
             <p class="menu-link"></p>
         </div>
-        <div class="bar-wrapper">
-            <input type="checkbox" id="leftbutton" class="leftbutton" style="display: none;">
-            <div class="left-bar">
-                <p class="left-bar-link"></p>
-                <p class="left-bar-link"></p>
-                <p class="left-bar-link"></p>
+        <div class="all-bar-wrapper">
+            <input type="checkbox" id="allbutton" class="allbutton" style="display: none;">
+            <div class="all-bar">
+                <div class="bar-wrapper" style="order: 3";>
+                    <input type="checkbox" id="rightbutton" class="rightbutton" style="display: none;">
+                    <div class="right-bar">
+                        <p class="right-bar-link"></p>
+                        <p class="right-bar-link"></p>
+                        <p class="right-bar-link"></p>
+                    </div>
+                    <label class="bar" for="rightbutton"></label>
+                </div>
+                <div class="bar-wrapper" style="order: 1;">
+                    <input type="checkbox" id="leftbutton" class="leftbutton" style="display: none;">
+                    <div class="left-bar">
+                        <p class="left-bar-link"></p>
+                        <p class="left-bar-link"></p>
+                        <p class="left-bar-link"></p>
+                    </div>
+                    <label class="bar" for="leftbutton"></label>
+                </div>
             </div>
-            <label class="bar" for="leftbutton"></label>
+            <label class="allbar" for="allbutton"></label>
         </div>
-        <div class="doc">
+        <div class="doc" style="order: 2;">
             <p class="content"></p>
             <p class="content"></p>
             <p class="content"></p>
         </div>
-        <div class="bar-wrapper">
-            <input type="checkbox" id="rightbutton" class="rightbutton" style="display: none;">
-            <div class="right-bar">
-                <p class="right-bar-link"></p>
-                <p class="right-bar-link"></p>
-                <p class="right-bar-link"></p>
-            </div>
-            <label class="bar" for="rightbutton"></label>
-        </div>
+
     </div>
+    <script>
+        const checkbox = document.querySelector('.menubutton');
+        const body = document.querySelector('body');
+        const doc = document.querySelector('.doc');
+        const menu = document.querySelector('.menu-wrapper');
+        function fixedBody() {
+            if (checkbox.checked) {
+                body.style.overflow = 'hidden';
+            }
+            else {
+                body.style.overflow = 'visible';
+            }
+        }
+        function closeMenu1() {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                body.style.overflow = 'visible';
+            }
+        }
+        function closeMenu2(event) {
+            const element = event.target
+            if (element.tagName.toLowerCase == 'a' && checkbox.checked) {
+                checkbox.checked = false;
+                body.style.overflow = 'visible';
+            }
+        }
+        checkbox.addEventListener('click', fixedBody);
+        doc.addEventListener('click', closeMenu1);
+        menu.addEventListener('click', closeMenu2)
+    </script>
 </body>
 </html>
