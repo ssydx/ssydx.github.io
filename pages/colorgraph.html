@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: black;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: aqua;
+            position: sticky;
+            top: 0;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+        }
+        .left-nav {
+            display: contents;
+        }
+        .right-nav {
+            flex: 0 0 auto;
+            display: flex;
+            width: 200px;
+            justify-content: space-around;
+        }
+        p[class*='left-nav'] {
+            height: 20px;
+            width: 50px;
+            background-color: cornflowerblue;
+        }
+        p[class*='right-nav'] {
+            height: 30px;
+            width: 30px;
+            background-color: rgb(100, 237, 118);
+        }
+        .main {
+            display: flex;
+            justify-content: space-between;
+         }
+        .doc {
+            flex: 1 1 auto;
+            height: 1000px;
+            width: 100%;
+            background-color: blueviolet;
+            margin: 0 10px;
+            border: solid;
+            padding: 10px;
+        }
+        .left-bar {
+            height: calc(100vh - 40px);
+            width: 200px;
+            overflow-y: auto;
+            position: sticky;
+            top: 40px;
+            background-color: chartreuse;
+        }
+        .right-bar {
+            height: calc(100vh - 40px);
+            width: 150px;
+            overflow-y: auto;
+            position: sticky;
+            top: 40px;
+            background-color: rgb(0, 102, 255);
+            order: 2;
+        }
+        .left-bar-link {
+            height: 150px;
+            margin: 10px;
+            width: 60%;
+            background-color: blue;
+        }
+        .right-bar-link {
+            height: 120px;
+            margin: 10px;
+            width: 30%;
+            background-color: rgb(60, 255, 0);
+        }
+        .content {
+            height: 100px;
+            margin: 10px 0;
+            width: 100%;
+            background-color: rgb(255, 0, 200);
+        }
+        .bar-wrapper {
+            flex: 0 0 auto;
+            display: flex;
+        }
+        .bar {
+            height: calc(100vh - 40px);
+            width: 20px;
+            position: sticky;
+            top: 40px;
+            background-color: rgb(183, 210, 30);
+            border-radius: 0 10px 10px 0;
+        }
+        .right-bar ~ .bar {
+            border-radius: 10px 0 0 10px;
+            background-color: chocolate;
+            order: 1;
+        }
+        .leftbutton:checked ~ .left-bar {
+            display: none;
+        }
+        .rightbutton:checked ~ .right-bar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="left-nav">
+            <p class="left-nav-one"></p>
+            <p class="left-nav-two"></p>
+        </div>
+        <div class="right-nav">
+            <p class="right-nav-one"></p>
+            <p class="right-nav-two"></p>
+            <p class="right-nav-three"></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="bar-wrapper">
+            <input type="checkbox" id="leftbutton" class="leftbutton" style="display: none;">
+            <div class="left-bar">
+                <p class="left-bar-link"></p>
+                <p class="left-bar-link"></p>
+                <p class="left-bar-link"></p>
+            </div>
+            <label class="bar" for="leftbutton"></label>
+        </div>
+        <div class="doc">
+            <p class="content"></p>
+            <p class="content"></p>
+            <p class="content"></p>
+        </div>
+        <div class="bar-wrapper">
+            <input type="checkbox" id="rightbutton" class="rightbutton" style="display: none;">
+            <div class="right-bar">
+                <p class="right-bar-link"></p>
+                <p class="right-bar-link"></p>
+                <p class="right-bar-link"></p>
+            </div>
+            <label class="bar" for="rightbutton"></label>
+        </div>
+    </div>
+</body>
+</html>
