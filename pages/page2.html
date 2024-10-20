@@ -8,17 +8,20 @@
     <!-- <script src="/assets/js/page2.js" defer></script> -->
 </head>
 <body>
+    <label class="menu" for="menuinput-id">
+        <span></span>
+    </label>
     <div class="web-nav">
+        <div class="placeholder"></div>
+        <input id="menuinput-id" class="menuInput" type="checkbox">
         <img class="homeIcon" src="/assets/images/home-icon.svg" alt="主页" height="24">
         <div class="left-nav">
             <!-- 保留外部left-nav以便后期新增子元素 -->
             <div class="path">
-                <span>此路径有八个中文字符一二三四五六七八</span>
-                <span>此路径有五个中文字符一二三四五</span>
-                <span>此路径有一个中文字符一</span>
+                <span>此路径有八个中文字符一二三四五六七</span>
+                <span>此路径有五个中文字符一二三四</span>
+                <span>此路径有一个中文字符</span>
                 <span>此路径没有中文字符</span>
-                <span>路径5</span>
-                <span>路径6</span>
             </div>
         </div>
         <span class="dividingLine"></span>
@@ -39,15 +42,50 @@
         </div>           
     </div>
     <main>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
-        <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        <div class="sidebar">
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+            <p>链接1</p>
+        </div>
+        <div class="document">
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+            <p>从示例3中可看到，Vector实现了__ getitem__方法，解释器可以对V1进行迭代并打印元素，但是！使用isinstance()判断时，返回的结果居然是False。明明可以使用for循环来迭代元素，为什么是判断是Flase呢？事实上，如果可迭代对象只是实现了__ getitem __ 的话，abc.Iterable是不考虑该方法的，这便导致了isinstance()判断不准确。更准确的方法应该是调用iter()函数，如果该对象不可迭代，就会抛出TypeError的错误。我们尝试使用iter()来判断一下。</p>
+        </div>
 
     </main>
 </body>

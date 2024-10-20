@@ -20,13 +20,11 @@
             gap: 10px;
             background-color: aqua;
             position: sticky;
+            z-index: 1;
             top: 0;
             height: 40px;
             margin-bottom: 10px;
             padding: 5px 10px;
-        }
-        .left-nav {
-            display: contents;
         }
         .menu {
             flex: 0 0 auto;
@@ -37,26 +35,23 @@
             left: -10px;
             display: none;
         }
-        .menuwrapper {
-            position: fixed;
-            top: 40px;
-            left: -300px;
-            overflow-y: auto;
-            width: 300px;
-            height: calc(100vh - 40px);
-            background-color: aliceblue;
-            padding: 10px;
-            transition: left 400ms ease;
-            display: none;
+        .left-nav {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: left;
         }
-        .menu-link {
-            height: 150px;
-            width: 100%;
-            background-color: black;
-            margin-bottom: 10px;
+        .spaceholder {
+            flex: 1 1 auto;
         }
-        .menubutton:checked ~ .menuwrapper {
-            left: 0;
+        .right-nav {
+            flex: 1 0 auto;
+            display: flex;
+            gap: 5px 10px;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 50%;
         }
         .left-nav-one {
             flex: 0 0 auto;
@@ -70,22 +65,15 @@
             width: 150px;
             background-color: rgb(24, 26, 30);
         }
-        .right-nav {
-            flex: 1 1 auto;
-            display: flex;
-            gap: 5px 10px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            align-items: center;
-            max-width: 50%;
-            border: solid;
-        }
         .right-nav-one {
-            flex: 1 1 auto;
+            flex: 0 0 auto;
             height: 15px;
-            max-width: 100%;
-            min-width: 150px;
+            width: 150px;
+            border: none;
             background-color: rgb(100, 237, 118);
+        }
+        .right-nav-one:focus {
+            flex: 1 0 auto;
         }
         .right-nav-two {
             flex: 0 0 auto;
@@ -98,18 +86,15 @@
             justify-content: space-between;
             gap: 10px;
          }
+        .all-bar-wrapper,.all-bar {
+            display: contents;
+        }
         .doc {
             flex: 1 1 auto;
             height: 1000px;
             width: 100%;
             background-color: blueviolet;
             padding: 10px;
-        }
-        .allbar {
-            display: none;
-        }
-        .all-bar-wrapper,.all-bar {
-            display: contents;
         }
         .left-bar {
             height: calc(100vh - 40px);
@@ -129,7 +114,7 @@
             order: 2;
         }
         .left-bar-link {
-            height: 150px;
+            height: 200px;
             margin: 10px;
             width: 60%;
             background-color: blue;
@@ -172,10 +157,7 @@
         .allbutton:checked ~ .all-bar {
             display: none;
         }
-        @media (max-width: 1200px) {
-            .menu, .menuwrapper {
-                display: none;
-            }
+        @media (max-width: 992px) {
             .all-bar-wrapper {
                 flex: 0 0 auto;
                 display: flex;
@@ -213,34 +195,48 @@
             .menu, .menuwrapper {
                 display: block;
             }
-            div[class*='bar'] {
+            .right-bar {
                 display: none;
             }
-            .left-nav-two {
+            .allbar {
                 display: none;
+            }
+            .all-bar {
+                display: contents;
+            }
+            .all-bar-wrapper {
+                position: fixed;
+                top: 40px;
+                z-index: 0;
+                display: block;
+                overflow-y: auto;
+                width: 300px;
+                height: calc(100vh - 40px);
+                background-color: aliceblue;
+                left: -300px;
+                transition: left 400ms ease;
+            }
+            .menubutton:checked ~ .all-bar-wrapper {
+            left: 0;
             }
         }
     </style>
 </head>
 <body>
     <div class="nav">
+        <label class="menu" for="menubutton"></label>
         <div class="left-nav">
-            <label class="menu" for="menubutton"></label>
             <p class="left-nav-one"></p>
             <p class="left-nav-two"></p>
         </div>
+        <div class="spaceholder"></div>
         <div class="right-nav">
-            <p class="right-nav-one"></p>
+            <input class="right-nav-one" type="search">
             <p class="right-nav-two"></p>
         </div>
     </div>
     <div class="main">
         <input type="checkbox" id="menubutton" class="menubutton" style="display: none;">
-        <div class="menuwrapper">
-            <p class="menu-link"></p>
-            <p class="menu-link"></p>
-            <p class="menu-link"></p>
-        </div>
         <div class="all-bar-wrapper">
             <input type="checkbox" id="allbutton" class="allbutton" style="display: none;">
             <div class="all-bar">
@@ -270,7 +266,6 @@
             <p class="content"></p>
             <p class="content"></p>
         </div>
-
     </div>
     <script>
         const checkbox = document.querySelector('.menubutton');

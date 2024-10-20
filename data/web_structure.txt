@@ -1,12 +1,19 @@
-nav
-    web-nav
-        left-nav
-            home
-            other
-        right-nav
-            theme
-            search
-    mobile-web
-main
-    sidebar
-    document
+body
+    div
+        web-nav
+            left-nav
+                home
+                other
+            right-nav
+                theme
+                search
+        mobile-web
+    main
+        aside
+        article
+            header
+                hgroup
+            section
+            section
+        footer
+            
