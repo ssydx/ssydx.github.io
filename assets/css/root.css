@@ -7,7 +7,9 @@
     --navwrapper-marginbottom: 1.2em;
     --navwrapper-gap: 0.5em;
     --navwrapper-backgroundcolor: rgba(220, 220, 220, 1);
-    --nav-gap:0.5em;
+    --navwrapper-gap:0.5em;
+    --navwrapper-boxshadow-gauss: 0.1em;
+    --navwrapper-boxshadow-color: rgba(0, 0, 0, 0.25);
     
 
     --mainwrapper-marginhorizontal: 0.5em;
@@ -17,10 +19,12 @@
 
     --menu-backgroundcolor: rgba(150, 150, 150, 1);
     --menubar-backgroundcolor: rgba(35, 35, 35, 1);
-    --menuwrapper-width: 20em;
-    --menuwrapper-padding: 0.5em;
-    --menuwrapper-backgroundcolor: rgba(220, 220, 220, 1);
-    --menuwrapper-gap: 1em;
+    --menucontainer-width: 15em;
+    --menucontainer-padding: 0.5em;
+    --menucontainer-backgroundcolor: rgba(220, 220, 220, 1);
+    --menucontainer-gap: 1em;
+    --menucontainer-boxshadow-gauss: 0.5em;
+    --menucontainer-boxshadow-color: rgba(0, 0, 0, 0.2);
 
 
     --labelaside-backgroundcolor: rgba(150, 150, 150, 1);
@@ -34,13 +38,13 @@
     --labelasideleft-backgroundcolor: rgba(150, 150, 150, 1);
     --labelasideleft-width: 1em;
     --asideleft-backgroundcolor: rgba(200, 200, 200, 1);
-    --asideleft-width: 15em;
+    --asideleft-width: 18em;
 
 
     --labelasideright-backgroundcolor: rgba(150, 150, 150, 1);
     --labelasideright-width: 1em;
     --asideright-backgroundcolor: rgba(200, 200, 200, 1);
-    --asideright-width: 12em;
+    --asideright-width: 15em;
 
     --asideleft-padding: 0.5em;
     --asideright-padding: 0.5em;

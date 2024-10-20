@@ -10,6 +10,8 @@ body {
     background-color: var(--body-backgroundcolor);
 }
 
+
+
 .nav-wrapper {
     position: sticky;
     z-index: 1000;
@@ -18,7 +20,7 @@ body {
     margin-bottom: var(--navwrapper-marginbottom);
     padding: 0 var(--navwrapper-paddinghorizontal);
     background-color: var(--navwrapper-backgroundcolor);
-    box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 var(--navwrapper-boxshadow-gauss) var(--navwrapper-boxshadow-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,17 +135,18 @@ body {
 .menu-container {
     position: fixed;
     top: 0;
-    left: calc(-1 * var(--menuwrapper-width));
+    left: calc(-1 * var(--menucontainer-width));
     transition: left 400ms ease;
     display: flex;
     flex-direction: column;
-    gap: var(--menuwrapper-gap) 0 ;
-    width: var(--menuwrapper-width);
+    gap: var(--menucontainer-gap) 0 ;
+    width: var(--menucontainer-width);
     height: 100vh;
     overflow-y: auto;
-    padding: var(--menuwrapper-padding);
-    padding-top: calc(var(--navwrapper-height) + var(--menuwrapper-padding));
-    background-color: var(--menuwrapper-backgroundcolor);
+    padding: var(--menucontainer-padding);
+    padding-top: calc(var(--navwrapper-height) + var(--menucontainer-padding));
+    background-color: var(--menucontainer-backgroundcolor);
+    box-shadow: 0 0 var(--menucontainer-boxshadow-gauss) var(--menucontainer-boxshadow-color);
 }
 .checkbox-menu:checked ~ .menu-container {
     left: 0;
@@ -181,6 +184,7 @@ body {
     overflow-y: auto;
     background-color: var(--singleaside-backgroundcolor);
     padding: var(--singleaside-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--singleaside-padding));
 }
 .aside-container > .aside-left {
     order: 2;
@@ -224,6 +228,7 @@ body {
     overflow-y: auto;
     background-color: var(--asideleft-backgroundcolor);
     padding: var(--asideleft-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideleft-padding));
 }
 .checkbox-asideleft:checked ~ .aside-left {
     display: none;
@@ -257,17 +262,13 @@ body {
     overflow-y: auto;
     background-color: var(--asideright-backgroundcolor);
     padding: var(--asideright-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideright-padding));
 }
 .checkbox-asideright:checked ~ .aside-right {
     display: none;
 }
 
-.aside-left {
-    
-}
-.aside-right {
-    
-}
+
 .aside-left:empty::before {
     content: '';
     display: block;
@@ -310,6 +311,6 @@ body {
         display: contents;
     }
     .nav-wrapper {
-        padding-left: calc(var(--navwrapper-height) + 2 * var(--navwrapper-gap));
+        padding-left: calc(var(--navwrapper-height) + var(--navwrapper-gap));
     }
 }
