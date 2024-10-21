@@ -10,6 +10,9 @@
     --navwrapper-gap:0.5em;
     --navwrapper-boxshadow-gauss: 0.1em;
     --navwrapper-boxshadow-color: rgba(0, 0, 0, 0.25);
+
+    --navleft-gap: 1em;
+    --navright-gap: 1em;
     
 
     --mainwrapper-marginhorizontal: 0.5em;

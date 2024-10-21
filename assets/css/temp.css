@@ -12,6 +12,7 @@ body {
 
 
 
+
 .nav-wrapper {
     position: sticky;
     z-index: 1000;
@@ -25,6 +26,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 0 var(--navwrapper-gap);
+    overflow-x: hidden;
 }
 .placeholder-nav {
     order: 2;
@@ -33,33 +35,34 @@ body {
 .placeholder-nav:empty {
     background-color: tomato;
     height: 30%;
+    flex: 1 1 auto;
 }
 .nav-container {
     display: contents;
 }
-.nav-left {
+.nav-container > .nav-left {
     order: 1;
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 0 var(--nav-gap);
+    gap: 0 var(--navleft-gap);
 }
-.nav-right {
+.nav-container > .nav-right {
     order: 3;
     flex: 1 0 auto;
     max-width: 50%;
     display: flex;
     align-items: center;
     justify-content: right;
-    gap: 0 var(--nav-gap);
+    gap: 0 var(--navright-gap);
 }
-.nav-left:empty {
+.nav-container > .nav-left:empty {
     background-color: aqua;
     width: 100px;
     height: 50%;
 }
-.nav-right:empty {
+.nav-container > .nav-right:empty {
     background-color: yellowgreen;
     height: 80%;
 }
@@ -148,6 +151,19 @@ body {
     background-color: var(--menucontainer-backgroundcolor);
     box-shadow: 0 0 var(--menucontainer-boxshadow-gauss) var(--menucontainer-boxshadow-color);
 }
+.menu-container > .nav-right {
+    display: none;
+}
+.menu-container > .nav-right:empty {
+    background-color: greenyellow;
+    min-height: 1000px;
+}
+.menu-container > .aside-left {
+    order: 3;
+}
+.menu-container > .aside-right {
+    order: 2;
+}
 .checkbox-menu:checked ~ .menu-container {
     left: 0;
 }
@@ -185,6 +201,7 @@ body {
     background-color: var(--singleaside-backgroundcolor);
     padding: var(--singleaside-padding);
     padding-bottom: calc(var(--navwrapper-marginbottom) + var(--singleaside-padding));
+    transition: width 200ms ease, visibility 100ms ease;
 }
 .aside-container > .aside-left {
     order: 2;
@@ -193,7 +210,8 @@ body {
     order: 1;
 }
 .checkbox-aside:checked ~ .aside-container {
-    display: none;
+    width: 0;
+    visibility: hidden;
 }
 
 .doubleAside-wrapper {
@@ -229,9 +247,11 @@ body {
     background-color: var(--asideleft-backgroundcolor);
     padding: var(--asideleft-padding);
     padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideleft-padding));
+    transition: width 200ms ease, visibility 100ms ease;
 }
 .checkbox-asideleft:checked ~ .aside-left {
-    display: none;
+    width: 0;
+    visibility: hidden;
 }
 .rightAside-wrapper {
     order: 3;
@@ -263,9 +283,11 @@ body {
     background-color: var(--asideright-backgroundcolor);
     padding: var(--asideright-padding);
     padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideright-padding));
+    transition: width 200ms ease, visibility 100ms ease;
 }
 .checkbox-asideright:checked ~ .aside-right {
-    display: none;
+    width: 0;
+    visibility: hidden;
 }
 
 
@@ -311,6 +333,8 @@ body {
         display: contents;
     }
     .nav-wrapper {
-        padding-left: calc(var(--navwrapper-height) + var(--navwrapper-gap));
+        padding-left: calc(var(--navwrapper-height) + 2 * var(--navwrapper-gap));
     }
 }
+
+
