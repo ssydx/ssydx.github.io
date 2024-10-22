@@ -336,15 +336,3 @@ body {
         padding-left: calc(var(--navwrapper-height) + 2 * var(--navwrapper-gap));
     }
 }
-
-
-@media (-webkit-min-device-pixel-ratio: 2) {
-    body {
-        font-size: 32px; /* 2倍DPR */
-    }
-}
-@media (-webkit-min-device-pixel-ratio: 3) {
-    body {
-        font-size: 48px; /* 3倍DPR */
-    }
-}
