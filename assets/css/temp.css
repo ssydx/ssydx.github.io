@@ -11,6 +11,33 @@ body {
 }
 
 
+@font-face {
+    font-family: nav_font;
+    src: url('/assets/fonts/HYQiHei_60S.ttf');
+}
+
+@font-face {
+    font-family: content_font;
+    src: url('/assets/fonts/SourceHanSerifCN-Regular.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: content_font;
+    src: url('/assets/fonts/FZLanTYJW_501L.TTF');
+    font-weight: 300;
+}
+.nav-wrapper {
+    font-family: nav_font;
+}
+
+.main-wrapper {
+    font-family: content_font;
+    font-weight: 100;
+}
+.aside-left, .aside-right {
+    font-family: content_font;
+    font-weight: 300;
+}
 
 
 .nav-wrapper {

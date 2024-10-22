@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: black;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background-color: aqua;
+            position: sticky;
+            z-index: 1;
+            top: 0;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+        }
+        .menu {
+            flex: 0 0 auto;
+            height: 40px;
+            width: 40px;
+            background-color: tomato;
+            position: relative;
+            left: -10px;
+            display: none;
+        }
+        .left-nav {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: left;
+        }
+        .spaceholder {
+            flex: 1 1 auto;
+        }
+        .right-nav {
+            flex: 1 0 auto;
+            display: flex;
+            gap: 5px 10px;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 50%;
+        }
+        .left-nav-one {
+            flex: 0 0 auto;
+            height: 20px;
+            width: 30px;
+            background-color: cornflowerblue;
+        }
+        .left-nav-two {
+            flex: 0 0 auto;
+            height: 20px;
+            width: 150px;
+            background-color: rgb(24, 26, 30);
+        }
+        .right-nav-one {
+            flex: 0 0 auto;
+            height: 15px;
+            width: 150px;
+            border: none;
+            background-color: rgb(100, 237, 118);
+        }
+        .right-nav-one:focus {
+            flex: 1 0 auto;
+        }
+        .right-nav-two {
+            flex: 0 0 auto;
+            height: 15px;
+            width: 50px;
+            background-color: rgb(238, 255, 0);
+        }
+        .main {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+         }
+        .all-bar-wrapper,.all-bar {
+            display: contents;
+        }
+        .doc {
+            flex: 1 1 auto;
+            height: 1000px;
+            width: 100%;
+            background-color: blueviolet;
+            padding: 10px;
+        }
+        .left-bar {
+            height: calc(100vh - 40px);
+            width: 200px;
+            overflow-y: auto;
+            position: sticky;
+            top: 40px;
+            background-color: chartreuse;
+        }
+        .right-bar {
+            height: calc(100vh - 40px);
+            width: 150px;
+            overflow-y: auto;
+            position: sticky;
+            top: 40px;
+            background-color: rgb(0, 102, 255);
+            order: 2;
+        }
+        .left-bar-link {
+            height: 200px;
+            margin: 10px;
+            width: 60%;
+            background-color: blue;
+        }
+        .right-bar-link {
+            height: 120px;
+            margin: 10px;
+            width: 30%;
+            background-color: rgb(60, 255, 0);
+        }
+        .content {
+            height: 100px;
+            margin: 10px 0;
+            width: 100%;
+            background-color: rgb(255, 0, 200);
+        }
+        .bar-wrapper {
+            flex: 0 0 auto;
+            display: flex;
+        }
+        .bar {
+            height: calc(100vh - 40px);
+            width: 20px;
+            position: sticky;
+            top: 40px;
+            background-color: rgba(183, 210, 30, 0.603);
+            border-radius: 0 10px 10px 0;
+        }
+        .right-bar ~ .bar {
+            border-radius: 10px 0 0 10px;
+            background-color: chocolate;
+            order: 1;
+        }
+        .leftbutton:checked ~ .left-bar {
+            display: none;
+        }
+        .rightbutton:checked ~ .right-bar {
+            display: none;
+        }
+        .allbutton:checked ~ .all-bar {
+            display: none;
+        }
+        @media (max-width: 992px) {
+            .all-bar-wrapper {
+                flex: 0 0 auto;
+                display: flex;
+            }
+            .all-bar {
+                display: flex;
+                flex-direction: column;
+                position: sticky;
+                top: 40px;
+                width: 200px;
+                height: calc(100vh - 40px);
+                background-color: brown;
+                overflow-y: auto;
+            }
+            .allbar {
+                display: block;
+                height: calc(100vh - 40px);
+                width: 20px;
+                position: sticky;
+                top: 40px;
+                background-color: rgb(210, 30, 30);
+                border-radius: 0 10px 10px 0;
+            }
+            .bar-wrapper, .left-bar, .right-bar {
+                display: contents;
+            }
+            .bar {
+                display: none;
+            }
+            p[class*='link'] {
+                flex: 0 0 auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .menu, .menuwrapper {
+                display: block;
+            }
+            .right-bar {
+                display: none;
+            }
+            .allbar {
+                display: none;
+            }
+            .all-bar {
+                display: contents;
+            }
+            .all-bar-wrapper {
+                position: fixed;
+                top: 40px;
+                z-index: 0;
+                display: block;
+                overflow-y: auto;
+                width: 300px;
+                height: calc(100vh - 40px);
+                background-color: aliceblue;
+                left: -300px;
+                transition: left 400ms ease;
+            }
+            .menubutton:checked ~ .all-bar-wrapper {
+            left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <label class="menu" for="menubutton"></label>
+        <div class="left-nav">
+            <p class="left-nav-one"></p>
+            <p class="left-nav-two"></p>
+        </div>
+        <div class="spaceholder"></div>
+        <div class="right-nav">
+            <input class="right-nav-one" type="search">
+            <p class="right-nav-two"></p>
+        </div>
+    </div>
+    <div class="main">
+        <input type="checkbox" id="menubutton" class="menubutton" style="display: none;">
+        <div class="all-bar-wrapper">
+            <input type="checkbox" id="allbutton" class="allbutton" style="display: none;">
+            <div class="all-bar">
+                <div class="bar-wrapper" style="order: 3";>
+                    <input type="checkbox" id="rightbutton" class="rightbutton" style="display: none;">
+                    <div class="right-bar">
+                        <p class="right-bar-link"></p>
+                        <p class="right-bar-link"></p>
+                        <p class="right-bar-link"></p>
+                    </div>
+                    <label class="bar" for="rightbutton"></label>
+                </div>
+                <div class="bar-wrapper" style="order: 1;">
+                    <input type="checkbox" id="leftbutton" class="leftbutton" style="display: none;">
+                    <div class="left-bar">
+                        <p class="left-bar-link"></p>
+                        <p class="left-bar-link"></p>
+                        <p class="left-bar-link"></p>
+                    </div>
+                    <label class="bar" for="leftbutton"></label>
+                </div>
+            </div>
+            <label class="allbar" for="allbutton"></label>
+        </div>
+        <div class="doc" style="order: 2;">
+            <p class="content"></p>
+            <p class="content"></p>
+            <p class="content"></p>
+        </div>
+    </div>
+    <script>
+        const checkbox = document.querySelector('.menubutton');
+        const body = document.querySelector('body');
+        const doc = document.querySelector('.doc');
+        const menu = document.querySelector('.menu-wrapper');
+        function fixedBody() {
+            if (checkbox.checked) {
+                body.style.overflow = 'hidden';
+            }
+            else {
+                body.style.overflow = 'visible';
+            }
+        }
+        function closeMenu1() {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                body.style.overflow = 'visible';
+            }
+        }
+        function closeMenu2(event) {
+            const element = event.target
+            if (element.tagName.toLowerCase == 'a' && checkbox.checked) {
+                checkbox.checked = false;
+                body.style.overflow = 'visible';
+            }
+        }
+        checkbox.addEventListener('click', fixedBody);
+        doc.addEventListener('click', closeMenu1);
+        menu.addEventListener('click', closeMenu2)
+    </script>
+</body>
+</html>
