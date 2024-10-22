@@ -4,88 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: aqua;
-            position: sticky;
-            top: 0;
-        }
-        .left-nav {
-            display: contents;
-            border: solid;
-        }
-        .right-nav {
-            flex: 0 0 auto;
-            display: flex;
-            width: 200px;
-            justify-content: space-around;
-            border: solid;
-        }
-        .remainder {
-            height: 30px;
-            width: 100%;
-            background-color: brown;
-        }
-        /* .main {
-            display: grid;
-            grid-template-areas: 'left-bar doc right-bar';
-            grid-template-columns: auto 3fr auto;
-            gap: 10px;
-        } */
-         .main {
-            display: flex;
-         }
-        .doc {
-            height: 3000px;
-            width: 100%;
-            background-color: blueviolet;
-        }
-        .left-bar {
-            height: calc(100vh - 35px);
-            width: 250px;
-            overflow-y: auto;
-            position: sticky;
-            top: 35px;
-        }
-        .left-bar-link {
-            height: 200px;
-            margin: 10PX;
-            width: 60%;
-            background-color: blue;
-        }
-    </style>
 </head>
 <body>
-    <div class="nav">
-        <div class="left-nav">
-            <p>123</p>
-            <p>456</p>
-        </div>
-        <div class="right-nav">
-            <p>789</p>
-            <p>abc</p>
-        </div>
-    </div>
-    <div class="remainder">
-
-    </div>
-    <div class="main">
-        <div class="left-bar">
-            <p class="left-bar-link"></p>
-            <p class="left-bar-link"></p>
-            <p class="left-bar-link"></p>
-        </div>
-        <div class="doc">
-
-        </div>
-    </div>
+    <p id="a"></p>
+    <script>
+        const dpr = window.devicePixelRatio;
+        document.getElementById('a').innerHTML = dpr;
+    </script>
 </body>
 </html>

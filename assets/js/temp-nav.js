@@ -33,6 +33,7 @@ document.addEventListener(
         nav_right.forEach(element => {
             element.appendChild(navRight_newNode.cloneNode(true));
         })
+        console.log(nav_right);
         var navRight_newNode = document.createElement('form');
         navRight_newNode.setAttribute('class','form-theme');
         navRight_newNode.setAttribute('action','#');
