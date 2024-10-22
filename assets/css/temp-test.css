@@ -9,7 +9,6 @@ a {
     height: calc(2 / 3 * var(--navwrapper-height));
 }
 .nav-left > a {
-    margin-right: 1em;
     transition: border-bottom 200ms ease, font-weight 200ms ease;
 }
 .nav-left > a:hover {
