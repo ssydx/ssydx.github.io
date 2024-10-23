@@ -1,6 +1,6 @@
 @import '/assets/css/root.css';
 
-* {
+*:not(p, h1, h2, h3) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,6 +14,12 @@ body {
 @font-face {
     font-family: nav_font;
     src: url('/assets/fonts/HYQiHei_60S.ttf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: nav_font;
+    src: url('/assets/fonts/HYQiHei_95S.ttf');
+    font-weight: 200;
 }
 
 @font-face {
@@ -26,15 +32,16 @@ body {
     src: url('/assets/fonts/FZLanTYJW_501L.TTF');
     font-weight: 300;
 }
-.nav-wrapper {
+.nav-container > .nav-left > a {
     font-family: nav_font;
+    font-weight: 100;
 }
 
-.main-wrapper {
+.main-wrapper * {
     font-family: content_font;
     font-weight: 100;
 }
-.aside-left, .aside-right {
+.aside-left *, .aside-right * {
     font-family: content_font;
     font-weight: 300;
 }
