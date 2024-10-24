@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOC</title>
+    <style>
+        #ida {    
+            height: 100px;
+            width: 300px;
+            background-color: rgb(187, 187, 187);
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+        }
+        #b {    
+            height: 100px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <p>123</p>
+    <p>123</p>
+    <script>
+        var val = document.URL
+        var ele = document.createElement('p');
+        ele.innerHTML = 'URL:' + val;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var val = document.title
+        var ele = document.createElement('p');
+        ele.innerHTML = 'title:' + val;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var val = document.head
+        var ele = document.createElement('p');
+        ele.innerHTML = 'title:' + val;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var val = document.body
+        var ele = document.createElement('p');
+        ele.innerHTML = 'title:' + val;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var val = document.scripts.length
+        var ele = document.createElement('p');
+        ele.innerHTML = 'title:' + val;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+        console.log(document.querySelectorAll('p'));
+        console.log(document.getElementsByTagName('p'));
+        console.log(navigator.platform);
+        console.log(navigator.language);
+        console.log(navigator.userAgent);
+        console.log(navigator.onLine);
+        console.log(navigator.appName);
+        console.log(navigator.appVersion);
+        console.log(navigator.appCodeName);
+        console.log(navigator.product);
+        console.log(navigator.javaEnabled);
+        console.log(navigator.languages);
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+@import '/assets/css/map.css';
+
+@font-face {
+    font-family: heiti;
+    src: url('/assets/fonts/黑体/SourceHanSansCN-Light.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: heiti;
+    src: url('/assets/fonts/黑体/SourceHanSansCN-Normal.otf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: heiti;
+    src: url('/assets/fonts/黑体/SourceHanSansCN-Bold.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: songti;
+    src: url('/assets/fonts/宋体/SourceHanSerifCN-ExtraLight.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: songti;
+    src: url('/assets/fonts/宋体/SourceHanSerifCN-Regular.otf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: songti;
+    src: url('/assets/fonts/宋体/SourceHanSerifCN-Bold.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: yuanti;
+    src: url('/assets/fonts/圆体/ResourceHanRoundedCN-Light.ttf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: yuanti;
+    src: url('/assets/fonts/圆体/ResourceHanRoundedCN-Normal.ttf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: yuanti;
+    src: url('/assets/fonts/圆体/ResourceHanRoundedCN-Bold.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: kaiti;
+    src: url('/assets/fonts/楷体/LXGWWenKaiMono-Light.ttf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: kaiti;
+    src: url('/assets/fonts/楷体/LXGWWenKaiMono-Regular.ttf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: kaiti;
+    src: url('/assets/fonts/楷体/LXGWWenKaiMono-Medium.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: yishuti;
+    src: url('/assets/fonts/其他/段宁毛笔行书.ttf');
+}
+
+
+.main-wrapper * {
+    font-family: songti;
+    font-weight: 200;
+}
+.aside-left *, .aside-right * {
+    font-family: yuanti;
+    font-weight: 200;
+}
+
+h1 {
+    margin: 0.5em 0;
+    font-size: 2em;
+    font-family: heiti !important;
+    font-weight: 300 !important;
+}
+h2 {
+    margin: 0.5em 0;
+    font-size: 1.5em;
+    font-family: heiti !important;
+    font-weight: 300 !important;
+}
+h3 {
+    margin: 1em 0;
+    font-size: 1em;
+    font-family: heiti !important;
+    font-weight: 200 !important;
+}
+p {
+    margin: 1em 0;
+    font-size: 1em;
+    text-indent: 2em;
+}
+
+.nav-container > .nav-left > a {
+    font-family: heiti;
+    font-weight: 200;
+}
+
+code {
+    display: block;
+    padding: .5em 1em;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    background-color: rgba(200, 200, 200, 0.3);
+    border-radius: 5px;
+    font-family: monospace !important;
+}
+
+a {
+    display: block;
+}
+
+
+
+
+
+/* 左侧导航栏设置 */
+.nav-left > .home-icon {
+    height: calc(2 / 3 * var(--navwrapper-height));
+}
+.nav-left > a {
+    transition: border-bottom 100ms ease, font-weight 50ms ease;
+}
+.nav-left > a:hover {
+    font-weight: 300;
+    border-bottom: 0.25em solid black;
+}
+/* 右侧导航栏设置 */
+.nav-right > .form-search {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 0.5em;
+    height: calc(2 / 3 * var(--navwrapper-height));
+}
+.nav-right > .form-search > * {
+    all: unset;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+    padding: 0 0.5em;
+    height: calc(2 / 3 * var(--navwrapper-height));
+}
+.nav-right > .form-search > .searchbox {
+    border-radius: calc(2 / 3 * var(--navwrapper-height));
+    background-color: white;
+    width: 120px;
+    transition: border 400ms ease, flex 400ms ease;
+}
+.nav-right > .form-search > .submitbutton {
+    border-radius: calc(1 / 10 * var(--navwrapper-height));
+    background-color: rgb(245, 245, 245);
+    white-space: nowrap;
+}
+.nav-right > .form-search > .searchbox:focus {
+    flex: 1 0 auto;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+.nav-right > .form-theme {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: right;
+    gap: 0.5em;
+    height: calc(2 / 3 * var(--navwrapper-height));
+}
+.nav-right > .form-theme > .themelabel {
+    align-self: center;
+    font-size: 1.0em;
+}
+.nav-right > .form-theme > .selectlist {
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+    border-radius: calc(1 / 10 * var(--navwrapper-height));
+}
+

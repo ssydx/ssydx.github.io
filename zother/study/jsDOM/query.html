@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ida {    
+            height: 100px;
+            width: 300px;
+            background-color: rgb(187, 187, 187);
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+        }
+        #b {    
+            height: 100px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="ida" class="class a">
+        123
+        <a href="#">123</a>
+    </div>
+    <script>
+        var ele = document.createElement('p');
+        ele.innerHTML = document.getElementById('ida');
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+        
+        var ele = document.createElement('p');
+        ele.innerHTML = document.getElementById('ida').tagName;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var ele = document.createElement('p');
+        ele.innerHTML = document.getElementById('ida').className;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var ele = document.createElement('p');
+        ele.innerHTML = document.getElementById('ida').id;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var ele = document.createElement('p');
+        ele.innerHTML = document.getElementById('ida').innerHTML;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var ele = document.createElement('p');
+        ele.innerHTML = document.querySelector('a').href;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+        var ele = document.createElement('p');
+        ele.innerHTML = document.querySelector('a').href;
+        var parent = document.querySelector('body');
+        parent.appendChild(ele);
+
+    </script>
+</body>
+</html>

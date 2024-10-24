@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+    // 头部定义脚本
+        function myfunc1() {
+            document.getElementById('a').innerHTML='哈哈，文本被改了吧！';
+        }
+    </script>
+</head>
+<body>
+    <p id="a">第1行</p>
+    <p id="b">第2行</p>
+    <p id="c">第3行</p>
+    <button type="button" onclick="myfunc1()">调用头部函数</button>
+    <button type="button" onclick="myfunc2()">调用底部函数</button>
+    <button type="button" onclick="myouterfunc('c')">调用外部函数</button>
+    <script>
+    // 内部定义脚本，在body的最下部定义脚本会提高显示速度，因为脚本编译需要时间
+        function myfunc2() {
+            document.getElementById('b').style.color='red';
+        }
+    </script>
+    <!-- 外部定义脚本 -->
+    <script src="/assets/js/test.js"></script>
+</body>
+</html>
