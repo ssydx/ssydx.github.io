@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="loadXMLDoc()">获取我的音乐列表</button>
+    <br><br>
+    <table id="demo"></table>
+    <div id="ida"></div>
+
+    <script>
+        function myFunction(xmlDoc) {
+            var table="<tr><th>艺术家</th><th>曲目</th></tr>";
+            const tracks = xmlDoc.querySelectorAll("TRACK");
+            tracks.forEach(element => {
+                artist = '<td>' + element.querySelector('ARTIST').innerHTML + '</td>';
+                title = '<td>' + element.querySelector('TITLE').innerHTML + '</td>';
+                table_row = '<tr>' + artist + title + '</tr>';
+                table += table_row;
+            })
+            document.getElementById("demo").innerHTML = table;
+        }
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange =  function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this.responseXML);
+                }
+            };
+            xmlhttp.open("GET", "./file.xml", true);
+            xmlhttp.send();
+        }
+        
+    </script>
+</body>
+</html>
+
+
+
+

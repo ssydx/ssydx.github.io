@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>一级标题</h1>
+    <p id="ida">pa标签</p>
+    <p id="idb">pb标签</p>
+    <br>
+    <button type="button" onclick="runAll()">Click me</button>
+    <script>
+        // 定义一个将参数内容填入指定元素内的函数(浏览器预览)
+        function insertHTML(text) {
+            document.getElementById('ida').innerHTML = text;
+        }
+
+        // 获取信息
+        function loaddoc() {
+            // 新建一个对象
+            var xhttp = new XMLHttpRequest();
+            // 定义readState属性改变时调用的函数，无需显式调用
+            xhttp.onreadystatechange = function() {
+                // 如果readState为4，即请求完成
+                // 如果status为200，即请求成功
+                if (this.readyState == 4 && this.status == 200) {
+                    // 调用函数
+                    insertHTML(this.responseText);
+                }
+            }
+            // 规定请求
+            xhttp.open('GET', './ajax.txt', true);
+            // 发送请求
+            xhttp.send();
+        }
+
+        // 获取头部信息
+        function getHeader() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('idb').innerHTML = this.getResponseHeader('Last-Modified');
+                }
+            }
+            xhttp.open('GET', './ajax.txt', true);
+            xhttp.send();
+        }
+        
+        function runAll() {
+            loaddoc();
+            getHeader();
+        }
+    </script>
+</body>
+</html>

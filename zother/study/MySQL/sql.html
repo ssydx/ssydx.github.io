@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<select name="users" onchange="showUser(this.value)">
+    <option value="">请选择：</option>
+    <option value="1">Alibaba</option>
+    <option value="2">APPLE</option>
+    <option value="3">BAIDU</option>
+    <option value="4">Canon</option>
+    <option value="5">Google</option>
+    <option value="6">HUAWEI</option>
+    <option value="7">Microsoft</option>
+    <option value="8">Nokia</option>
+    <option value="9">SONY</option>
+    <option value="10">Tencent</option>
+    <option value="11">Apple</option>
+</select>
+<hr>
+
+<div id="ida">list</div>
+
+<script>
+    function showUser(str) {
+        if (str.length == 0) {
+            document.getElementById("ida").innerHTML="";
+        } 
+        else {
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    document.getElementById("ida").innerHTML=this.responseText;
+                }
+        }
+        xmlhttp.open("GET","./sql.php?q="+str,true);
+        xmlhttp.send();
+        }
+    }
+</script>
+</body>
+</html>
