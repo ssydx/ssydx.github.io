@@ -1,5 +1,6 @@
 <?php
 // 姓名数组
+// $arr[] = val为数组追加
  $a[] = "Ava";
  $a[] = "Brielle";
  $a[] = "Caroline";
@@ -34,16 +35,20 @@
  $a[] = "Violet";
 
 // 从 URL 获取 q 参数
+// 获取请求数组中的q变量
 $q = $_REQUEST["q"];
 
 $hint = "";
 
 // 查看数组中所有 hint，$q 是否与 "" 相同
+// .是字符串连接符
 if ($q !== "") {
     $q = strtolower($q);
     $len=strlen($q);
     foreach($a as $name) {
+        // 如果q是name的子串
         if (stristr($q, substr($name, 0, $len))) {
+            // 追加当前name到hint中
             if ($hint === "") {
                 $hint = $name;
             } else {

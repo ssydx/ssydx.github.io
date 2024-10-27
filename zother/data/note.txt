@@ -36,7 +36,7 @@ form
             注意2：配合option使用，记录的是option的value，而不是option的内容
             注意3：配合input使用，使用时input利用list属性引用datalist的id，提供预定义列表的option的value
         optgroup：
-            optgroup组件：
+            optgroup组件： 
                 option：详情见其他位置
             常用属性：label
             label：设置选项的分组标签

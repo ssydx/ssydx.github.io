@@ -158,6 +158,12 @@ a {
     width: 120px;
     transition: border 400ms ease, flex 400ms ease;
 }
+.nav-right > .form-search > .searchbox::placeholder {
+    text-decoration: underline turquoise solid .2em;
+}
+.nav-right > .form-search > .searchbox:focus::placeholder {
+    text-decoration: none;
+}
 .nav-right > .form-search > .submitbutton {
     border-radius: calc(1 / 10 * var(--navwrapper-height));
     background-color: rgb(245, 245, 245);

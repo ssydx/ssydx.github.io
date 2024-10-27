@@ -9,14 +9,16 @@
     <h1>一级标题</h1>
     <p id="ida">pa标签</p>
     <p id="idb">pb标签</p>
+    <p id="idc">pc标签</p>
+    <p id="idd">pd标签</p>
     <br>
     <button type="button" onclick="runAll()">Click me</button>
     <script>
+
         // 定义一个将参数内容填入指定元素内的函数(浏览器预览)
         function insertHTML(text) {
             document.getElementById('ida').innerHTML = text;
         }
-
         // 获取信息
         function loaddoc() {
             // 新建一个对象
@@ -36,7 +38,7 @@
             xhttp.send();
         }
 
-        // 获取头部信息
+        // 获取头部指定信息
         function getHeader() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -47,11 +49,39 @@
             xhttp.open('GET', './ajax.txt', true);
             xhttp.send();
         }
+
+        // 获取头部全部信息
+        function getAllHeader() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('idc').innerHTML = this.getAllResponseHeaders();
+                }
+            }
+            xhttp.open('GET', './ajax.txt', true);
+            xhttp.send();
+        }
         
+        // 获取状态信息
+        function getStatus() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('idd').innerHTML = this.statusText;
+                    console.log(this.statusText);
+                }
+            }
+            xmlhttp.open('GET', './ajax.txt', true);
+            xmlhttp.send();
+        }
+
         function runAll() {
             loaddoc();
             getHeader();
+            getAllHeader();
+            getStatus();
         }
+    
     </script>
 </body>
 </html>
