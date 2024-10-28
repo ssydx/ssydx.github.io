@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>一级标题</h1>
+    <p id="a">searchByPHP</p>
+    <!-- <p id="b">searchByASP</p> -->
+    <hr>
+    <input type="text" id="txta" onkeyup="searchByPHP(this.value)">
+    <!-- <input type="text" id="txtb" onkeyup="searchByASP(this.value)"> -->
+
+    <script>
+
+        // 必须在浏览器直接打开
+        function searchByPHP(str) {
+            if (str.length == 0) {
+                document.getElementById('a').innerHTML = '';
+            }
+            else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        document.getElementById('a').innerHTML = this.responseText; 
+                    }
+                }
+                xhttp.open('GET', './search.php?q='+str, true);
+                // ?为查询字符串的起始标志，q为查询变量，str为q的值
+                xhttp.send();
+            }
+        }
+
+        // function searchByASP(str) {
+        //     if (str.length == 0) { 
+        //         document.getElementById("b").innerHTML = "";
+        //     }
+        //     else {
+        //         var xmlhttp = new XMLHttpRequest();
+        //         xmlhttp.onreadystatechange = function() {
+        //             if (this.readyState == 4 && this.status == 200) {
+        //                 document.getElementById("b").innerHTML = this.responseText;
+        //             }
+        //         };
+        //         xmlhttp.open('GET', '/zother/data/file.asp?q='+str, true);
+        //         xmlhttp.send();
+        //     }
+        // }
+        
+    </script>
+</body>
+</html>
