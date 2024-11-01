@@ -1,0 +1,403 @@
+@charset "UTF-8";
+/*
+	构建于10/10/2024
+*/
+
+@import '/assets/css/map.css';
+
+/* 清除所有边距并更改框模型 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* 清除链接样式 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* 设置默认整体背景色 */
+body {
+    background-color: var(--body-backgroundcolor);
+}
+/* 设置导航栏 */
+.nav-wrapper {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    height: var(--navwrapper-height);
+    margin-bottom: var(--navwrapper-marginbottom);
+    padding: 0 var(--navwrapper-paddinghorizontal);
+    background-color: var(--navwrapper-backgroundcolor);
+    box-shadow: 0 0 var(--navwrapper-boxshadow-gauss) var(--navwrapper-boxshadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 var(--navwrapper-gap);
+    overflow-x: hidden;
+}
+.placeholder-nav {
+    order: 2;
+    flex: 1 1 auto;
+}
+.placeholder-nav:empty {
+    background-color: tomato;
+    height: 30%;
+    flex: 1 1 auto;
+}
+.nav-container {
+    display: contents;
+}
+.nav-container > .nav-left {
+    order: 1;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 0 var(--navleft-gap);
+}
+.nav-container > .nav-right {
+    order: 3;
+    flex: 1 0 auto;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 0 var(--navright-gap);
+}
+.nav-container > .nav-left:empty {
+    background-color: aqua;
+    width: 100px;
+    height: 50%;
+}
+.nav-container > .nav-right:empty {
+    background-color: greenyellow;
+    height: 80%;
+}
+
+
+/* 设置主体 */
+.main-wrapper {
+    margin: 0 var(--mainwrapper-marginhorizontal);
+    background-color: var(--mainwrapper-background-color);
+    display: flex;
+    justify-content: space-between;
+    gap: 0 var(--mainwrapper-gap);
+}
+
+/* 设置目录 */
+.toc-wrapper {
+    display: contents;
+}
+.label-menu {
+    /* 设置弹出式菜单图标 */
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+    height: var(--navwrapper-height);
+    width: var(--navwrapper-height);
+    background-color: var(--menu-backgroundcolor);
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+}
+.label-menu > span {
+    /* 图标内线条 */
+    height: calc(1 / 15 * var(--navwrapper-height));
+    width: 70%;
+    display: block;
+    transition: all 400ms ease;
+    background-color: var(--menubar-backgroundcolor);
+}
+.label-menu > span::before {
+    /* 图标内线条 */
+    content: '';
+    position: relative;
+    top: calc(-4 / 15 * var(--navwrapper-height));
+    height: calc(1 / 15 * var(--navwrapper-height));
+    width: 100%;
+    display: block;
+    background-color: inherit;
+}
+.label-menu > span::after {
+    /* 图标内线条 */
+    content: '';
+    position: relative;
+    top: calc(3 / 15 * var(--navwrapper-height));
+    height: calc(1 / 15 * var(--navwrapper-height));
+    width: 100%;
+    display: block;
+    background-color: inherit;
+}
+.checkbox-menu:checked ~ .label-menu > span {
+    transform: rotate(315deg);
+}
+.checkbox-menu:checked ~ .label-menu > span::before {
+    transform: rotate(90deg);
+    top: 0;
+}
+.checkbox-menu:checked ~ .label-menu > span::after {
+    top: calc(-1 / 15 * var(--navwrapper-height));
+}
+.checkbox-menu:checked:hover ~ .label-menu > span {
+    transform: rotate(135deg);
+}
+.toc-container {
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--menucontainer-width));
+    transition: left 400ms ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--menucontainer-gap) 0 ;
+    width: var(--menucontainer-width);
+    height: 100vh;
+    /* overflow-y: auto; */
+    /* 为了避免右侧导航栏加入导致水平溢出 */
+    overflow-x: hidden;
+    padding: var(--menucontainer-padding);
+    padding-top: calc(var(--navwrapper-height) + var(--menucontainer-padding));
+    background-color: var(--menucontainer-backgroundcolor);
+    box-shadow: 0 0 var(--menucontainer-boxshadow-gauss) var(--menucontainer-boxshadow-color);
+}
+.toc-container > .nav-right {
+    position: sticky;
+    transform: translate(calc(-1 * var(--menucontainer-padding)), calc(-1 * var(--menucontainer-padding)));
+    top: 0;
+    left: 0;
+    width: calc(100% + 2 * var(--menucontainer-padding));
+    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em 0;
+    background-color: inherit;
+    padding: var(--menucontainer-padding);
+    order: 1;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.toc-container > .nav-right:empty::before {
+    content: '';
+    display: block;
+    background-color: greenyellow;
+    min-height: 100px;
+}
+.toc-container > .aside-left {
+    order: 3;
+}
+.toc-container > .aside-right {
+    order: 2;
+}
+.checkbox-menu:checked ~ .toc-container {
+    left: 0;
+}
+
+
+/* 设置单侧目录 */
+.label-aside {
+    order: 2;
+    width: var(--labelaside-width);
+    background-color: var(--labelaside-backgroundcolor);
+    border-radius: 0 calc(2 / 3 * var(--labelaside-width)) calc(2 / 3 * var(--labelaside-width)) 0;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+}
+.label-aside::before {
+    content: '«';
+}
+.checkbox-aside:checked ~ .label-aside::before {
+    content: '»';
+}
+.aside-container {
+    order: 1;
+    width: var(--singleaside-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--singleaside-gap);
+    overflow-y: auto;
+    background-color: var(--singleaside-backgroundcolor);
+    padding: var(--singleaside-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--singleaside-padding));
+    transition: width 200ms ease, visibility 100ms ease;
+}
+.aside-container > .aside-left {
+    order: 2;
+}
+.aside-container > .aside-right {
+    order: 1;
+}
+.checkbox-aside:checked ~ .aside-container {
+    width: 0;
+    visibility: hidden;
+}
+
+
+
+/* 设置双侧目录 */
+.toc-container {
+    display: contents;
+}
+.leftAside-wrapper {
+    order: 1;
+    flex: 0 0 auto;
+    position: sticky;
+    top: var(--navwrapper-height);
+    height: calc(100vh - var(--navwrapper-height));
+    display: flex;
+}
+.label-asideleft {
+    order: 2;
+    width: var(--labelasideleft-width);
+    background-color: var(--labelasideleft-backgroundcolor);
+    border-radius: 0 calc(2 / 3 * var(--labelasideleft-width)) calc(2 / 3 * var(--labelasideleft-width)) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.label-asideleft::before {
+    content: '«';
+}
+.checkbox-asideleft:checked ~ .label-asideleft::before {
+    content: '»';
+}
+.leftAside-wrapper > .aside-left {
+    order: 1;
+    width: var(--asideleft-width);
+    overflow-y: auto;
+    background-color: var(--asideleft-backgroundcolor);
+    padding: var(--asideleft-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideleft-padding));
+    transition: width 200ms ease, visibility 100ms ease;
+}
+.checkbox-asideleft:checked ~ .aside-left {
+    width: 0;
+    visibility: hidden;
+}
+.rightAside-wrapper {
+    order: 3;
+    flex: 0 0 auto;
+    position: sticky;
+    top: var(--navwrapper-height);
+    height: calc(100vh - var(--navwrapper-height));
+    display: flex;
+}
+.label-asideright {
+    order: 1;
+    width: var(--labelasideright-width);
+    background-color: var(--labelasideright-backgroundcolor);
+    border-radius: calc(2 / 3 * var(--labelasideright-width)) 0 0 calc(2 / 3 * var(--labelasideright-width));
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.label-asideright::before {
+    content: '»';
+}
+.checkbox-asideright:checked ~ .label-asideright::before {
+    content: '«';
+}
+.rightAside-wrapper > .aside-right {
+    order: 2;
+    width: var(--asideright-width);
+    overflow-y: auto;
+    background-color: var(--asideright-backgroundcolor);
+    padding: var(--asideright-padding);
+    padding-bottom: calc(var(--navwrapper-marginbottom) + var(--asideright-padding));
+    transition: width 200ms ease, visibility 100ms ease;
+}
+.checkbox-asideright:checked ~ .aside-right {
+    width: 0;
+    visibility: hidden;
+}
+/* 设置左右侧边栏为空时内容 */
+.aside-left:empty::before {
+    content: '';
+    display: block;
+    background-color: aqua;
+    min-height: 1000px;
+}
+.aside-right:empty::before {
+    content: '';
+    display: block;
+    background-color: greenyellow;
+    min-height: 500px;
+}
+
+/* 设置内容 */
+.main {
+    order: 2;
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding: var(--main-padding);
+}
+.main:empty {
+    background-color: tomato;
+    min-height: 1500px;
+}
+
+/* 最大宽度不超过992px时 */
+@media (max-width: 992px) {
+    .toc-container {
+        position: sticky;
+        top: var(--navwrapper-height);
+        height: calc(100vh - var(--navwrapper-height));
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .leftAside-wrapper, .rightAside-wrapper {
+        display: contents;
+    }
+    .label-asideleft, .label-asideright {
+        display: none;
+    }
+    .label-aside {
+        display: flex;
+    }
+    .leftAside-wrapper > .aside-left, .rightAside-wrapper > .aside-right {
+        overflow-y: visible;
+    }
+}
+/* 最大宽度不超过768px时 */
+@media (max-width: 768px) {
+    .label-aside {
+        display: none;
+    }
+    .label-menu {
+        display: flex;
+    }
+    /* 由于左上角增加了弹出式菜单图标，故导航栏增大左侧内边距 */
+    .nav-wrapper {
+        padding-left: calc(var(--navwrapper-height) + 2 * var(--navwrapper-gap));
+    }
+    /* 隐藏右侧导航栏 */
+    .nav-container > .nav-right {
+        display: none;
+    }
+    /* 显示弹出式菜单中的右侧导航栏 */
+    .menu-container > .nav-right {
+        display: flex;
+    }
+    .toc-container {
+        position: fixed;
+        top: 0;
+        left: calc(-1 * var(--menucontainer-width));
+        transition: left 400ms ease;
+        display: flex;
+        flex-direction: column;
+        gap: var(--menucontainer-gap) 0 ;
+        width: var(--menucontainer-width);
+        height: 100vh;
+        /* overflow-y: auto; */
+        /* 为了避免右侧导航栏加入导致水平溢出 */
+        overflow-x: hidden;
+        padding: var(--menucontainer-padding);
+        padding-top: calc(var(--navwrapper-height) + var(--menucontainer-padding));
+        background-color: var(--menucontainer-backgroundcolor);
+        box-shadow: 0 0 var(--menucontainer-boxshadow-gauss) var(--menucontainer-boxshadow-color);
+    }
+}

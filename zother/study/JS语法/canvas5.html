@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .controls {
+            visibility: hidden;
+            opacity: 0.5;
+            width: 400px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -200px;
+            background-color: black;
+            box-shadow: 3px 3px 5px black;
+            transition: 1s all;
+            display: flex;
+        }
+
+        .player:hover .controls,
+        .player:focus-within .controls {
+        opacity: 1;
+        }
+        @font-face {
+            font-family: "HeydingsControlsRegular";
+            src: url("fonts/heydings_controls-webfont.eot");
+            src:
+                url("fonts/heydings_controls-webfont.eot?#iefix")
+                format("embedded-opentype"),
+                url("fonts/heydings_controls-webfont.woff") format("woff"),
+                url("fonts/heydings_controls-webfont.ttf") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+            }
+
+        button:before {
+            font-family: HeydingsControlsRegular;
+            font-size: 20px;
+            position: relative;
+            content: attr(data-icon);
+            color: #aaa;
+            text-shadow: 1px 1px 0px black;
+        }
+        .timer {
+            line-height: 38px;
+            font-size: 10px;
+            font-family: monospace;
+            text-shadow: 1px 1px 0px black;
+            color: white;
+            flex: 5;
+            position: relative;
+            }
+
+        .timer div {
+            position: absolute;
+            background-color: rgb(255 255 255 / 20%);
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 38px;
+            z-index: 2;
+        }
+
+        .timer span {
+            position: absolute;
+            z-index: 3;
+            left: 19px;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <video controls>
+          <source src="/assets/videos/sintel-short.mp4" type="video/mp4" />
+        </video>
+        <div class="controls">
+          <button class="play" data-icon="P" aria-label="play pause toggle"></button>
+          <button class="stop" data-icon="S" aria-label="stop"></button>
+          <div class="timer">
+            <div></div>
+            <span aria-label="timer">00:00</span>
+          </div>
+          <button class="rwd" data-icon="B" aria-label="rewind"></button>
+          <button class="fwd" data-icon="F" aria-label="fast forward"></button>
+        </div>
+    </div>
+    <script>
+        const media = document.querySelector("video");
+        const controls = document.querySelector(".controls");
+
+        const play = document.querySelector(".play");
+        const stop = document.querySelector(".stop");
+        const rwd = document.querySelector(".rwd");
+        const fwd = document.querySelector(".fwd");
+
+        const timerWrapper = document.querySelector(".timer");
+        const timer = document.querySelector(".timer span");
+        const timerBar = document.querySelector(".timer div");
+        media.removeAttribute("controls");
+        controls.style.visibility = "visible";
+        function playPauseMedia() {
+            if (media.paused) {
+                play.setAttribute("data-icon", "u");
+                media.play();
+            } else {
+                play.setAttribute("data-icon", "P");
+                media.pause();
+            }
+        }
+        function stopMedia() {
+            media.pause();
+            media.currentTime = 0;
+            play.setAttribute("data-icon", "P");
+        }
+        let intervalFwd;
+        let intervalRwd;
+
+        function mediaBackward() {
+            clearInterval(intervalFwd);
+            fwd.classList.remove("active");
+
+            if (rwd.classList.contains("active")) {
+                rwd.classList.remove("active");
+                clearInterval(intervalRwd);
+                media.play();
+            } else {
+                rwd.classList.add("active");
+                media.pause();
+                intervalRwd = setInterval(windBackward, 200);
+            }
+        }
+
+        function mediaForward() {
+            clearInterval(intervalRwd);
+            rwd.classList.remove("active");
+
+            if (fwd.classList.contains("active")) {
+                fwd.classList.remove("active");
+                clearInterval(intervalFwd);
+                media.play();
+            } else {
+                fwd.classList.add("active");
+                media.pause();
+                intervalFwd = setInterval(windForward, 200);
+            }
+        }
+        function windBackward() {
+            if (media.currentTime <= 3) {
+                rwd.classList.remove("active");
+                clearInterval(intervalRwd);
+                stopMedia();
+            } else {
+                media.currentTime -= 3;
+            }
+        }
+
+        function windForward() {
+            if (media.currentTime >= media.duration - 3) {
+                fwd.classList.remove("active");
+                clearInterval(intervalFwd);
+                stopMedia();
+            } else {
+                media.currentTime += 3;
+            }
+        }
+        function setTime() {
+            const minutes = Math.floor(media.currentTime / 60);
+            const seconds = Math.floor(media.currentTime - minutes * 60);
+
+            const minuteValue = minutes.toString().padStart(2, "0");
+            const secondValue = seconds.toString().padStart(2, "0");
+
+            const mediaTime = `${minuteValue}:${secondValue}`;
+            timer.textContent = mediaTime;
+
+            const barLength =
+                timerWrapper.clientWidth * (media.currentTime / media.duration);
+            timerBar.style.width = `${barLength}px`;
+        }
+        play.addEventListener("click", playPauseMedia);
+        stop.addEventListener("click", stopMedia);
+        media.addEventListener("ended", stopMedia);
+        rwd.addEventListener("click", mediaBackward);
+        fwd.addEventListener("click", mediaForward);
+        media.addEventListener("timeupdate", setTime);
+
+    </script>
+    
+</body>
+</html>

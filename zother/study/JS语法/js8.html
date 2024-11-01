@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="c1">anniu</button>
+    <div style="border: solid;">
+        <h1>我的购物清单</h1>
+        <label for="goods">输入物品名称</label>
+        <input type="text" name="goods" id="goods">
+        <input type="submit" id="submit">
+        <div class="list">
+
+        </div>
+    </div>
+    <script>
+        const good = document.querySelector('#goods');
+        const submit = document.querySelector('#submit');
+        const list = document.querySelector('.list');
+        submit.addEventListener('click',() => {
+            const itemvalue = good.value;
+            good.value = '';
+            good.focus();
+            const item = document.createElement('div');
+            const itemtext = document.createElement('span');
+            itemtext.textContent = itemvalue;
+            const itembutton = document.createElement('button');
+            itembutton.textContent = 'delete';
+            item.appendChild(itemtext);
+            item.appendChild(itembutton);
+            list.appendChild(item);
+            itembutton.addEventListener('click',() => {
+                list.removeChild(item);
+            })
+        })
+    </script>
+</body>
+</html>

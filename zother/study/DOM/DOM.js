@@ -25,6 +25,9 @@ function func() {
     console.log(document.getElementById('id1').nodeType);
     console.log(document.getElementById('id1').nodeValue);
     console.log(document.getElementById('id1').ownerDocument);
+    console.log(document.getElementById('docc').compareDocumentPosition(document.getElementById('doce')));
+    console.log(document.getElementById('id1').getAttribute('class'));
+    console.log(document.getElementById('id1').getAttributeNode('class'));
 }
 
 

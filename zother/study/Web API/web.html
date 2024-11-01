@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./inset.js" defer></script>
+</head>
+<body>
+
+<h1>JavaScript 验证</h1>
+
+<p>请输入一个数字然后点击 OK：</p>
+
+<form action="">
+    <input id="id1" type="number" min="100" max="300" required>
+    <input type="submit" onclick="myFunction()">
+</form>
+
+<p>如果数字小于 100 或大于 300，将显示错误消息。</p>
+
+<p id="demo"></p>
+<p id="text"></p>
+
+<script>
+function myFunction() {
+  const inpObj = document.getElementById("id1");
+  if (!inpObj.valid) {
+    document.getElementById("demo").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo").innerHTML = "Input OK";
+  }
+  inpObj.setCustomValidity('输入字段不合法');
+  console.log(inpObj.validity);
+  console.log(inpObj.validationMessage);
+  console.log(window.history);
+  console.log(window.localStorage);
+  console.log(window.sessionStorage);
+} 
+</script>
+
+</body>
+</html>
