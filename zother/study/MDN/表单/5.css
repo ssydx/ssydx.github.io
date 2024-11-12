@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.c1 > input {
+    /* appearance: none; */
+}
+
+.c1 > input[type="search"]:not(:focus, :active)::-webkit-search-cancel-button { display: none; }
+
+.c1 > input[type="checkbox"] {
+    width: 100px;
+    height: 100px;
+}
+
+.c1 > input[type="radio"] {
+    width: 100px;
+    height: 100px;
+}
+
+.c1 > select {
+    appearance: none;
+}

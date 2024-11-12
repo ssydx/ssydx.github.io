@@ -13,10 +13,10 @@ let db;
 // 响应
 
 // 打开数据库
-const dbres = indexedDB.open('ssydx_db', 1);
+const dbres = indexedDB.open('ssydx_db', 3);
 // 更新结构时（打开版本号>当前版本号）触发
 dbres.addEventListener('upgradeneeded', event => {
-    const tb = event.target.result.createObjectStore('ssydx_tb1', {keyPath:'id',autoIncrement:true});
+    const tb = event.target.result.createObjectStore('ssydx_tb3', {keyPath:'id',autoIncrement:true});
     tb.createIndex('name', 'name', {unique:true});
     tb.createIndex('age', 'age', {unique:false});
     tb.createIndex('sex', 'sex', {unique:false});
@@ -30,7 +30,7 @@ dbres.addEventListener('success', event => {
     // 获取数据库
     db = event.target.result;
     // 刷新下拉列表
-    display();
+    init();
 });
 
 // 插入新名称
@@ -42,13 +42,13 @@ function addname(event) {
         // 获取数据表
         const tb = db.transaction(['ssydx_tb1'],'readwrite').objectStore('ssydx_tb1');
         const newItem = {name:text.value,age:20};
-        // 插入新名称
+        // 插入新名称 
         const addrcdres = tb.add(newItem);
         // 插入成功时触发
         addrcdres.addEventListener('success',() => {
             console.log('新名称插入成功');
             // 刷新下拉列表
-            display();
+            init();
         })
         // 插入失败时触发
         addrcdres.addEventListener('error', event => console.log(event.target.error));
@@ -97,7 +97,7 @@ function addage() {
     }
 }
 
-function display() {
+function init() {
     // 清空原下拉列表
     while (select.firstElementChild.nextElementSibling) {
         select.removeChild(select.lastElementChild);
